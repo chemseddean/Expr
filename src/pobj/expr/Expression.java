@@ -1,5 +1,5 @@
 package pobj.expr;
 
 public interface Expression {
-    // initialement vide
+	int eval();
 }

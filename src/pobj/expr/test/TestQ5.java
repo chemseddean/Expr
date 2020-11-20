@@ -35,6 +35,7 @@ public class TestQ5 {
 		assertEquals((5+3), add.eval());
 
 		Expression mul = new Mult(ct3, add);
+		
 		assertEquals(17 * (5+3), mul.eval());
 		
 		Expression tot = new Mult(mul, var);
