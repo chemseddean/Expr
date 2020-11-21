@@ -52,6 +52,10 @@ public class Mult implements Expression{
 		}
 		
 		return mult; 
+		
+	}
 
+	public <T> T accept(IVisitor<T> v) {
+		return v.visit(this);
 	}
 }

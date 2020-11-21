@@ -50,4 +50,8 @@ public class Add implements Expression{
 		
 		return sum; 
 	}
+	
+	public <T> T accept(IVisitor<T> v) {
+		return v.visit(this);
+	}
 }

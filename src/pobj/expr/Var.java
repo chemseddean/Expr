@@ -30,6 +30,8 @@ public class Var implements Expression{
 		}
 	}
 	
-	
+	public <T> T accept(IVisitor<T> v) {
+		return v.visit(this);
+	}
 	
 }

@@ -28,4 +28,8 @@ public class Constant implements Expression {
 	public int eval(){
 		return entier; 
 	}
+	
+	public <T> T accept(IVisitor<T> v) {
+		return v.visit(this);
+	}
 }
