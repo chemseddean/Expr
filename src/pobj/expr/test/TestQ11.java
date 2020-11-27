@@ -33,38 +33,38 @@ public class TestQ11 {
 		assertEquals("( x + 10 ) * ( y + -8 )", e3.accept(vts));		
 
 		VisitorSimplify vs = new VisitorSimplify();
-		Expression e1s = e1.accept(vs);
+		Expression e1s = (Expression) e1.accept(vs);
 		assertEquals("20", e1s.accept(vts));
-		assertEquals("( x + 3 ) * ( x + 4 )", e2.accept(vs).accept(vts));
-		assertEquals("( x + 10 ) * ( y + -8 )", e3.accept(vs).accept(vts));				
+		assertEquals("( x + 3 ) * ( x + 4 )", ((Expression) e2.accept(vs)).accept(vts));
+		assertEquals("( x + 10 ) * ( y + -8 )", ((Expression) e3.accept(vs)).accept(vts));				
 		
 		Constant ct = new Constant(3);
 		Constant ct2 = new Constant(5);
 		
 		Expression add = new Add(ct, ct2);
-		assertEquals("8", add.accept(vs).accept(vts));
+		assertEquals("8", ((Expression) add.accept(vs)).accept(vts));
 		
 		Constant ct3 = new Constant(17);
 		Expression mul = new Mult(ct3, add);
-		assertEquals("136", mul.accept(vs).accept(vts));
+		assertEquals("136", ((Expression) mul.accept(vs)).accept(vts));
 		
 		// neutral element Add
 		Expression n = new Add(new Var("x"),new Constant(0));
-		assertEquals("x", n.accept(vs).accept(vts));
+		assertEquals("x", ((Expression) n.accept(vs)).accept(vts));
 		n = new Add(new Constant(0), new Var("x"));
-		assertEquals("x", n.accept(vs).accept(vts));
+		assertEquals("x", ((Expression) n.accept(vs)).accept(vts));
 
 		// neutral element Mult
 		n = new Mult(new Var("x"),new Constant(1));
-		assertEquals("x", n.accept(vs).accept(vts));
+		assertEquals("x", ((Expression) n.accept(vs)).accept(vts));
 		n = new Mult(new Constant(1), new Var("x"));
-		assertEquals("x", n.accept(vs).accept(vts));
+		assertEquals("x", ((Expression) n.accept(vs)).accept(vts));
 
 		// 0 absorbing for Mult
 		n = new Mult(new Var("x"),new Constant(0));
-		assertEquals("0", n.accept(vs).accept(vts));
+		assertEquals("0", ((Expression) n.accept(vs)).accept(vts));
 		n = new Mult(new Constant(0), new Var("x"));
-		assertEquals("0", n.accept(vs).accept(vts));
+		assertEquals("0", ((Expression) n.accept(vs)).accept(vts));
 				
 	}
 

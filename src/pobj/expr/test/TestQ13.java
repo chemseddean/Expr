@@ -29,12 +29,12 @@ public class TestQ13 {
 
 	@Override
 	public Integer visit(Add e) {
-		return e.getLeft().accept(this) + e.getRight().accept(this) + 1;
+		return (int)e.getLeft().accept(this) + (int)e.getRight().accept(this) + 1;
 	}
 
 	@Override
 	public Integer visit(Mult e) {
-		return e.getLeft().accept(this) + e.getRight().accept(this) + 1;
+		return (int)e.getLeft().accept(this) + (int)e.getRight().accept(this) + 1;
 	}
 
 	@Override
@@ -69,12 +69,12 @@ public class TestQ13 {
 		Expression e4 = new Mult(z, new Mult(z, new Mult(z, z)));
 
 		Expression eds1 = Question13.compose(vs1, vdz, e1);
-		rese = e1.accept(vev4);
-		resd = eds1.accept(vev4);
+		rese = (int) e1.accept(vev4);
+		resd = (int) eds1.accept(vev4);
 		System.out.println("e1=" + e1.accept(vts1) + ", eds1=" + eds1.accept(vts1) + "\n!"
-				+ eds1.accept(vs1).accept(vts1) + " ==> (" + rese + " " + resd + ")" + "nb = [" + e1.accept(vnn1) + ","
+				+ ((Add) eds1.accept(vs1)).accept(vts1) + " ==> (" + rese + " " + resd + ")" + "nb = [" + e1.accept(vnn1) + ","
 				+ eds1.accept(vnn1) + "]");
-		assertTrue(e1.accept(vnn1) <= eds1.accept(vnn1));
+		assertTrue((int)e1.accept(vnn1) <= (int)eds1.accept(vnn1));
 		assertTrue(899 == resd);
 
 		Expression eds4 = Question13.compose(vs1, vdz, e4);
